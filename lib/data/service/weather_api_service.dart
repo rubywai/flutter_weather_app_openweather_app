@@ -12,7 +12,7 @@ abstract class WeatherApiService{
   @GET('${ApiConst.CITY_SEARCH}?limit=10&appid=${ApiConst.APIKEY}')
   Future<List<CitySearchResult>> searchCity({@Query('q') required String city,});
   
-  @GET('${ApiConst.CURRENT_WEATHER}?ppid=${ApiConst.APIKEY}&units=metric')
+  @GET('${ApiConst.CURRENT_WEATHER}?appid=${ApiConst.APIKEY}&units=metric')
   Future<CurrentWeatherModel> getCurrentWeather({@Query('lat') required double lat,@Query('lon') required double lon});
 
 }

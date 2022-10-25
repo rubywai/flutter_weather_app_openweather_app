@@ -27,7 +27,7 @@ class _WeatherApiService implements WeatherApiService {
         _setStreamType<List<CitySearchResult>>(Options(
                 method: 'GET', headers: _headers, extra: _extra)
             .compose(_dio.options,
-                'geo/1.0/direc?limit=10&appid=1a8ac56b8a47eeeae81e7bea8a3e57fc',
+                'geo/1.0/direct?limit=10&appid=1a8ac56b8a47eeeae81e7bea8a3e57fc',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -48,7 +48,7 @@ class _WeatherApiService implements WeatherApiService {
         CurrentWeatherModel>(Options(
             method: 'GET', headers: _headers, extra: _extra)
         .compose(_dio.options,
-            'data/2.5/weather?ppid=1a8ac56b8a47eeeae81e7bea8a3e57fc&units=metric',
+            'data/2.5/weather?appid=1a8ac56b8a47eeeae81e7bea8a3e57fc&units=metric',
             queryParameters: queryParameters, data: _data)
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = CurrentWeatherModel.fromJson(_result.data!);
