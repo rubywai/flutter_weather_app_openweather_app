@@ -9,10 +9,12 @@ part 'weather_api_service.g.dart';
 abstract class WeatherApiService{
   factory WeatherApiService(Dio dio) => _WeatherApiService(dio);
 
-  @GET('${ApiConst.CITY_SEARCH}?limit=10&appid=${ApiConst.APIKEY}')
-  Future<List<CitySearchResult>> searchCity({@Query('q') required String city,});
+  @GET(ApiConst.CITY_SEARCH)
+  Future<List<CitySearchResult>> searchCity({@Query('q') required String city,@Query('limit') required int limit,
+  @Query('appid') required String appId});
   
-  @GET('${ApiConst.CURRENT_WEATHER}?ppid=${ApiConst.APIKEY}&units=metric')
-  Future<CurrentWeatherModel> getCurrentWeather({@Query('lat') required double lat,@Query('lon') required double lon});
+  @GET(ApiConst.CURRENT_WEATHER)
+  Future<CurrentWeatherModel> getCurrentWeather({@Query('lat') required double lat,@Query('lon') required double lon,
+  @Query('appid') required String appId,@Query('units') required String unit});
 
 }
