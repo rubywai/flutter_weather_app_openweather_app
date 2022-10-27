@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/bloc/search_bloc/search_city_bloc.dart';
+
+import '../../../bloc/search_bloc/search_city_bloc.dart';
 
 class SearchFieldWidget extends StatelessWidget {
   const SearchFieldWidget({
@@ -19,21 +20,19 @@ class SearchFieldWidget extends StatelessWidget {
         controller: _searchController,
         decoration: InputDecoration(
             hintText: 'Search City',
-            labelText: 'Search City',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
             suffixIcon: IconButton(
-              onPressed: () {
-                if(_searchController.text.isEmpty){
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(const SnackBar(content: Text('Please Enter city name')));
-                }
-                else{
-                  _searchCityBloc.add(SearchCity(_searchController.text));
-                }
-              },
-              icon: const Icon(Icons.search),
-            )
-        ),
+                onPressed: () {
+                  if (_searchController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Please Enter City Name')));
+                  } else {
+                    _searchCityBloc
+                        .add(SearchCity(_searchController.text));
+                  }
+                },
+                icon: const Icon(Icons.search))),
       ),
     );
   }
